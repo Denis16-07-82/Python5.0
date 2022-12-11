@@ -7,14 +7,15 @@ def encode(data):
     if not data:
         return ''
     ei = 0
-    while ei < len(data):
+    while ei + 1 < len(data):
         count = 1
         if ei + 1 < len(data):
-            while ei + 1 < len(data) and (data[ei] == data[ei + 1]):
+            while data[ei] == data[ei + 1]:
                 count += 1
-                if ei + 2 < len(data) :
+                if ei + 1 < len(data) - 1:
                     ei += 1
                 else: break
+                
         encoding += str(count) + data[ei]
         ei+= 1
 
@@ -41,7 +42,7 @@ def decode(data = ''):
 
 
 
-data = "AAAaAbb"
+data = "ACCCeeebbbbb"
 data1 =(encode(data))
 print(encode(data))
 print(decode(data1))
